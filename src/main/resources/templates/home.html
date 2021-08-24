@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments :: head">
+</head>
+<body>
+<div th:replace="fragments :: header"></div>
+<div class="content">
+    <h1 style="text-align: center" class="mt-4">Wszystkie kategorie</h1>
+
+    <div th:each="category: ${categories}">
+        <h2 th:text="${category.name}"></h2>
+    </div>
+
+    <a href="/auctions">Zobacz wszystkie przepisy</a>
+
+</div>
+</body>
+</html>
