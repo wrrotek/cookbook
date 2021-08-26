@@ -13,9 +13,12 @@ public interface RecipeRepository extends JpaRepository<Recipe, Long> {
 
     List<Recipe> findByCategory(Category category);
 
-    List<Recipe> findAll(String sort);
+    List<Recipe> findAll();
 
     @Modifying
     @Transactional
     void deleteRecipeById(Long id);
+
+      List<Recipe> findByNameContainsIgnoreCase(String recipeFilters);
+
 }

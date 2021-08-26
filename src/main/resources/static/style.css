@@ -6,7 +6,7 @@
 
 .header {
     width: 100%;
-    background-image: url('/recipe.jpg');
+    background-image: url('/food.jpg');
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover; /* Resize the background image to cover the entire container */

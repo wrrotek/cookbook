@@ -13,8 +13,17 @@ public class Recipe {
     private String name;
     private String ingredients;
     private String description;
+    private int likes;
     @ManyToOne
     private Category category;
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
 
     public Long getId() {
         return id;

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments :: head">
+</head>
+<body>
+<div th:replace="fragments :: header"></div>
+<div class="content">
+    <h1 style="text-align: center" class="mt-4">PRZEPISY</h1>
+    <h2 th:text="${cat.name}"></h2>
+
+    <ul>
+        <li th:each="recipe: ${cat.recipes}">
+            <a th:href="'/recipes/' + ${recipe.id}"
+               th:text="|${recipe.ingredients} ${recipe.description} ${recipe.likes}|"></a>
+        </li>
+    </ul>
+
+
+    <a th:href="|/recipes/add?categoryId=${cat.id}|">Dodaj przepis</a>
+    <a th:href="|/recipes/delete/${recipes.id}|">Usuń przepis</a>
+
+</div>
+</body>
+</html>

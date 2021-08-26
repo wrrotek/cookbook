@@ -15,16 +15,15 @@ public class CategoryController {
     }
 
     @GetMapping("/category/{name}")
-    public String category(@PathVariable String name, Model model) {
-        Optional<Category> categoryOptional = categoryRepository.findByName(name);
+    public String category(@PathVariable Long id, Model model) {
+        Optional<Category> categoryOptional = categoryRepository.findById(id);
 
         if (categoryOptional.isPresent()) {
             Category cat = categoryOptional.get();
-            model.addAttribute("category", cat);
+            model.addAttribute("cat", cat);
             return "category";
         } else {
             return "error";
         }
     }
-
 }

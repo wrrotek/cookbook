@@ -16,6 +16,7 @@ public class RecipeController {
 
     private RecipeRepository recipeRepository;
     private CategoryRepository categoryRepository;
+    private RecipeService recipeService;
 
     public RecipeController(RecipeRepository recipeRepository, CategoryRepository categoryRepository) {
         this.recipeRepository = recipeRepository;
@@ -26,16 +27,16 @@ public class RecipeController {
     public String auctions(Model model,
                            @RequestParam(required = false) String sort,
                            Category categoryFilters) {
-        List<Recipe> categories;
+        List<Recipe> recipes;
         if (sort != null) {
-            categories = recipeRepository.findByCategory(categoryFilters);
+            recipes = recipeRepository.findByCategory(categoryFilters);
         } else {
-            categories = recipeRepository.findAll(sort);
+            recipes = recipeRepository.findAll();
         }
 
-        model.addAttribute("cars", categories);
+        model.addAttribute("category", recipes);
         model.addAttribute("filters", categoryFilters);
-        return "auctions";
+        return "recipes";
     }
 
     @GetMapping("/recipe/add")
@@ -44,7 +45,7 @@ public class RecipeController {
         recipe.setCategory(categoryRepository.findById(catId).orElse(null));
         model.addAttribute("recipe", recipe);
         model.addAttribute("category", categoryRepository.findAll());
-        return "budynekDodaj";
+        return "recipeAdd";
     }
 
     @PostMapping("/recipe/add")
